@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		binding.pry
 		@post = Post.find(params[:id])
 	end
 
@@ -15,7 +14,6 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		post = Post.create(params[:post])
 		redirect_to post_path(post)
 	end
@@ -27,7 +25,13 @@ class PostsController < ApplicationController
 
 	def update
 		post = Post.find(params[:id])
-		post.update(params.require(:post))
+		post.update(posts_params)
 		redirect_to post_path(post)
+	end
+
+	private 
+
+	def posts_params 
+		params.require(:post).permit(:title, :description, :category)
 	end
 end
