@@ -1,9 +1,11 @@
+require 'pry'
 class PostsController < ApplicationController
 	def index
 		@posts = Post.all
 	end
 
 	def show
+		binding.pry
 		@post = Post.find(params[:id])
 	end
 
@@ -13,6 +15,7 @@ class PostsController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		post = Post.create(params[:post])
 		redirect_to post_path(post)
 	end
