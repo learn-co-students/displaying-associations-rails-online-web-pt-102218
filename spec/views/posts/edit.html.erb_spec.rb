@@ -10,6 +10,7 @@ RSpec.describe "posts/edit", type: :feature do
     click_on "Update Post"
 
     expect(current_path).to eq(post_path(@post))
+    
     expect(page).to have_content("My Edited Post")
     expect(page).to have_content("My edited post description")
   end
